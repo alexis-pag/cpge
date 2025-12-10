@@ -21,6 +21,16 @@
   </head>
 
   <body>
+
+    <!-- ÉCRAN POUR ACTIVER LE SON -->
+    <div id="startAudio"
+         style="position: fixed; top:0; left:0; width:100%; height:100%;
+                background:black; color:white; display:flex; 
+                justify-content:center; align-items:center; font-size:28px;
+                cursor:pointer; z-index: 999;">
+      Cliquer pour activer le son
+    </div>
+
     <a-scene>
 
       <a-assets>
@@ -33,7 +43,7 @@
                src="assets/films/Temoin1extra.mp4"
                playsinline
                crossorigin="anonymous"
-               muted="false">
+               muted>
         </video>
       </a-assets>
 
@@ -79,5 +89,18 @@
       </a-video>
 
     </a-scene>
+
+    <!-- Script d’activation audio -->
+    <script>
+      document.querySelector('#startAudio').addEventListener('click', function () {
+        var video = document.querySelector('#video1');
+
+        video.muted = false;
+        video.play().catch(() => {});
+
+        document.querySelector('#startAudio').style.display = 'none';
+      });
+    </script>
+
   </body>
 </html>
