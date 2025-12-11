@@ -139,7 +139,26 @@
         document.querySelector('#startAudio').style.display = 'none';
       });
     </script>
+    <script>
+      document.querySelector('#startAudio').addEventListener('click', function () {
+        var video = document.querySelector('#video2');
 
+        video.muted = false;
+        video.play().catch(() => {});
+
+        document.querySelector('#startAudio').style.display = 'none';
+      });
+    </script>
+        <script>
+      document.querySelector('#startAudio').addEventListener('click', function () {
+        var video = document.querySelector('#video3');
+
+        video.muted = false;
+        video.play().catch(() => {});
+
+        document.querySelector('#startAudio').style.display = 'none';
+      });
+    </script>
   </body>
 </html>
 
