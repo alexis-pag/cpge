@@ -48,11 +48,14 @@
       </a-assets>
 
       <a-entity camera look-controls>
-        <a-entity cursor="fuse: true; fuseTimeout: 800"
-                  raycaster="objects: .playable"
-                  position="0 0 -1"
-                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                  material="shader: flat; color: white">
+<a-entity id="cursor"
+          cursor="fuse: true; fuseTimeout: 800"
+          raycaster="objects: .playable"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          material="shader: flat; color: #ff1111">
+</a-entity>
+
         </a-entity>
       </a-entity>
 
