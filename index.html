@@ -79,31 +79,17 @@
                     <a-video id="video1" class="playable" play-on-look="video: #video1" src="#video1" width="16" height="9" position="0.049 1.26 3.117" scale="0.013 0.053 0.1"></a-video>
                 </a-entity>
 
-                <a-entity id="telephone3" 
-                          gltf-model="#mobile3" 
-                          scale="0.5 0.5 0.39" 
-                          position="0.48 1.82 0.40" 
-                          rotation="90 -120 0">
+
+                <a-entity id="tel3+video2">
+                    <a-entity id="telephone3" gltf-model="#mobile3" scale="0.5 0.5 0.39" position="0.48 1.82 0.40" rotation="90 -120 0"></a-entity>
+                    <a-video id="video2" class="playable" play-on-look="video: #video2" src="#video2" width="16" height="9" position="0.1587 1.265 3.287" rotation="0 59.64 0" scale="0.018 0.053 0.1"></a-video>
                 </a-entity>
             </a-entity>
         </a-entity>
 
-        <!-- Écrans vidéo (tous corrects et indépendants) -->
 
-
-        <a-video id="video2" 
-                 class="playable" 
-                 play-on-look="video: #video2" 
-                 src="#video2" 
-                 width="16" 
-                 height="9" 
-                 position="0.1587 1.265 3.287" 
-                 rotation="0 59.64 0" 
-                 scale="0.018 0.053 0.1">
-        </a-video>
     </a-scene>
 
-    <!-- Script pour débloquer l’audio -->
     <script>
         document.querySelector('#startAudio').addEventListener('click', function () {
             ['#video1', '#video2', '#video3'].forEach(id => {
@@ -138,7 +124,45 @@
 
 
 
-<a-entity id="tel3+video2">
-<a-entity id="telephone3" gltf-model="#mobile3" scale="0.5 0.5 0.39" position="0.48 1.82 0.40" rotation="90 -120 0"></a-entity>
-<a-video id="video2" class="playable" play-on-look="video: #video2" src="#video2" width="16" height="9" position="0.1587 1.265 3.287" rotation="0 59.64 0" scale="0.018 0.053 0.1"></a-video>
-</a-entity>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
