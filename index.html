@@ -19,6 +19,36 @@
         }
       });
     </script>
+        <script>
+      AFRAME.registerComponent('play-on-look', {
+        init: function () {
+          var el = this.el;
+          el.addEventListener('mouseenter', function () {
+            var video = document.querySelector('#video2');
+            if (video) video.play();
+          });
+          el.addEventListener('mouseleave', function () {
+            var video = document.querySelector('#video2');
+            if (video) video.pause();
+          });
+        }
+      });
+    </script>
+        <script>
+      AFRAME.registerComponent('play-on-look', {
+        init: function () {
+          var el = this.el;
+          el.addEventListener('mouseenter', function () {
+            var video = document.querySelector('#video3');
+            if (video) video.play();
+          });
+          el.addEventListener('mouseleave', function () {
+            var video = document.querySelector('#video3');
+            if (video) video.pause();
+          });
+        }
+      });
+    </script>
   </head>
 
   <body>
