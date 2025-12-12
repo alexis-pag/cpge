@@ -1,30 +1,260 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<html>
+  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-</body>
+      .video-controls {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        z-index: 1000;
+      }
+
+      .video-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .video-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .video-btn.active {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+      }
+
+      .info-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .video-indicator {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 14px;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+      }
+
+      /* Fenêtre INFO */
+      #infoModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+
+      #infoModalContent {
+        background: white;
+        padding: 25px;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        font-size: 16px;
+      }
+
+      #closeInfo {
+        display: block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: none;
+        background: #667eea;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="info-btn" id="infoBtn">INFO</button>
+
+    <div class="video-indicator" id="videoIndicator">témoignage 1 : QUENTIN</div>
+
+    <div class="video-controls">
+      <button class="video-btn active" data-video="1">QUENTIN</button>
+      <button class="video-btn" data-video="2">HÉLÈNE</button>
+      <button class="video-btn" data-video="3">AXEL</button>
+    </div>
+
+    <a-scene 
+      mindar-image="imageTargetSrc: ./assets/targets-JPO.mind; filterMinCF: 10000000; filterBeta: 1000; warmupTolerance: 0; missTolerance: 500;" 
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights, antialias: true"
+      vr-mode-ui="enabled: false">
+
+      <a-assets>
+        <video id="video1" src="./assets/films/Temoin1extra.mp4" preload="auto" playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="video2" src="./assets/films/Temoin2extra.mp4" preload="auto" playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="video3" src="./assets/films/Temoin3extra.mp4" preload="auto" playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="chat" src="./assets/films/chat.mp4" preload="auto" playsinline webkit-playsinline crossorigin="anonymous"></video>
+
+        <a-asset-item id="logo" src="./assets/object/logo_simple.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane 
+          id="videoPlane"
+          src="#video1"
+          position="0 0 0"
+          height="1.2"
+          width="1"
+          material="shader: flat">
+        </a-plane>
+
+        <a-gltf-model
+          id="logo-earth"
+          src="#logo"
+          position="-0.36446 0.42983 0.18071"
+          rotation="90 0 0"
+          scale="0.2 0.2 0.2">
+        </a-gltf-model>
+      </a-entity>
+    </a-scene>
+
+    <!-- FENÊTRE INFO -->
+    <div id="infoModal">
+      <div id="infoModalContent">
+        <h2>Informations</h2>
+
+       <video width="100%" controls>
+          <source src="./assets/films/chat.mp4" type="video/mp4">
+        </video>
+
+        <button id="closeInfo">Fermer</button>
+      </div>
+    </div>
+
+    <script>
+      const videoPlane = document.querySelector('#videoPlane');
+      const videos = {
+        1: document.querySelector('#video1'),
+        2: document.querySelector('#video2'),
+        3: document.querySelector('#video3')
+      };
+
+      const names = {
+        1: "QUENTIN",
+        2: "HÉLÈNE",
+        3: "AXEL"
+      };
+
+      const buttons = document.querySelectorAll('.video-btn');
+      const indicator = document.querySelector('#videoIndicator');
+      let currentVideo = videos[1];
+      let isTargetFound = false;
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const videoNum = btn.getAttribute('data-video');
+
+          currentVideo.pause();
+          currentVideo.currentTime = 0;
+
+          currentVideo = videos[videoNum];
+          videoPlane.setAttribute('src', `#video${videoNum}`);
+
+          if (isTargetFound) currentVideo.play().catch(() => {});
+
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          indicator.textContent = `Témoignage ${videoNum} : ${names[videoNum]}`;
+        });
+      });
+
+      const sceneEl = document.querySelector('a-scene');
+
+      sceneEl.addEventListener('renderstart', () => {
+        const target = document.querySelector('[mindar-image-target]');
+
+        target.addEventListener('targetFound', () => {
+          isTargetFound = true;
+          currentVideo.play().catch(() => {});
+        });
+
+        target.addEventListener('targetLost', () => {
+          isTargetFound = false;
+          currentVideo.pause();
+        });
+      });
+
+      /* SCRIPT FENÊTRE INFO */
+      const infoBtn = document.getElementById('infoBtn');
+      const infoModal = document.getElementById('infoModal');
+      const closeInfo = document.getElementById('closeInfo');
+
+      infoBtn.addEventListener('click', () => {
+        infoModal.style.display = 'flex';
+      });
+
+      closeInfo.addEventListener('click', () => {
+        infoModal.style.display = 'none';
+      });
+
+      infoModal.addEventListener('click', (e) => {
+        if (e.target === infoModal) {
+          infoModal.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -151,9 +381,7 @@
         
         <a-assets timeout="30000">
             <a-asset-item id="table" src="assets/object/classic_round_side_table.glb"></a-asset-item>
-            <a-asset-item id="mobile1" src="assets/object/mobile1.glb"></a-asset-item>
-            <a-asset-item id="mobile2" src="assets/object/mobile2.glb"></a-asset-item>
-            <a-asset-item id="mobile3" src="assets/object/mobile3.glb"></a-asset-item>
+           
             
             <img id="frise" src="assets/object/frise.jpg">
 
