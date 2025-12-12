@@ -2,9 +2,9 @@
 
 ## Projet : Expérience de Réalité Augmentée -- CPGE Lycée Louis de Cormontaigne
 
-| -- | -- |
-| <img src="./assets/CPGEJPO1.jpg" alt="Flyer" width="200"/> | Ce projet propose une expérience de réalité augmentée (AR) accessible
-via un navigateur mobile, permettant d'afficher et de contrôler plusieurs témoignages vidéo lorsque l'utilisateur scanne un flyer dédié. |
+<img src="./assets/CPGEJPO1.jpg" alt="Flyer" width="300"/>
+
+Ce projet propose une expérience de réalité augmentée (AR) accessible via un navigateur mobile, permettant d'afficher et de contrôler plusieurs témoignages vidéo lorsque l'utilisateur scanne un flyer dédié.
 
 ## Technologies utilisées
 
