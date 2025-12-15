@@ -3,19 +3,13 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+      <body>
+        <a-assets-items>
+            <a-assets-item id="video1" src="assets/films/Temoin1extra.mp4" preload="auto" playsinline webkit-playsinline autoplay crossorigin="anonymous"></a-assets-item>
+            <a-assets-item id="video1" src="assets/films/Temoin1extra.mp4" preload="auto" playsinline webkit-playsinline autoplay crossorigin="anonymous"></a-assets-item>
+            <a-assets-item id="video1" src="assets/films/Temoin1extra.mp4" preload="auto" playsinline webkit-playsinline autoplay crossorigin="anonymous"></a-assets-item>
+        </a-assets-items>
 
-
-    
-
-  <body>
-    <button class="info-btn" id="infoBtn">INFO</button>
-    <div class="video-indicator" id="videoIndicator">Témoignage 1 : AXEL</div>
-
-    <div class="video-controls">
-      <button class="video-btn active" data-video="1">AXEL</button>
-      <button class="video-btn" data-video="2">HÉLÈNE</button>
-      <button class="video-btn" data-video="3">QUENTIN</button>
-    </div>
 
     <a-scene 
       id="arScene">
@@ -35,24 +29,13 @@
       </a-entity>
     </a-scene>
 
-    <!-- Modal INFO -->
-    <div id="infoModal">
-      <div id="infoModalContent">
-        <h2>Informations</h2>
-        <p>Cette expérience de réalité augmentée présente des témoignages d'anciens élèves des classes préparatoires aux grandes écoles (CPGE) du Lycée Louis de Cormontaigne de Metz. En pointant votre appareil vers le flyer, vous pouvez visionner les vidéos de AXEL, HÉLÈNE et QUENTIN, qui partagent leurs expériences et conseils.</p>
-        <p>Ce projet a été imaginé, encadré et co-développé par Matthieu Farcot, avec deux stagiaires de première professionnelle CIEL du Lycée Louis de Cormontaigne, Alexis Paglierusco et Lucas Munsch.</p>
-        <p>(c) 2025, Lycée Louis de Cormontaigne Metz</p>
-        <a href="https://cpge.lycee-cormontaigne-metz.fr" target="_blank">Visitez notre site pour en savoir plus</a>
 
-        <h2>Bonus</h2>
-        <video controls playsinline webkit-playsinline>
-          <source src="./assets/films/Chat.mp4#t=0.010" type="video/mp4">
-          Votre navigateur ne supporte pas la vidéo.
-        </video>
-        <p><i>Cette vidéo n'a rien à voir avec le projet. Mais vivons avec notre temps.</i></p>
-        <button id="closeInfo">Fermer</button>
-      </div>
-    </div>
+          
+        </a-scene>
+
+
+        
+      </body>
 
 
   </body>
