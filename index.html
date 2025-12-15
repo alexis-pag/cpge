@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
 
     
 
@@ -73,50 +73,6 @@
       </div>
     </div>
 
-    <script>
-      const videoPlane = document.querySelector('#videoPlane');
-      const videos = {1:document.querySelector('#video1'),2:document.querySelector('#video2'),3:document.querySelector('#video3')};
-      const names = {1:"AXEL",2:"HÉLÈNE",3:"QUENTIN"};
-      const buttons = document.querySelectorAll('.video-btn');
-      const indicator = document.querySelector('#videoIndicator');
-      let currentVideo = videos[1];
-      let isTargetFound = false;
 
-      // Boutons AR
-      buttons.forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const v = btn.getAttribute('data-video');
-          currentVideo.pause(); currentVideo.currentTime=0;
-          currentVideo = videos[v];
-          videoPlane.setAttribute('src', `#video${v}`);
-          if(isTargetFound) currentVideo.play().catch(()=>{});
-          buttons.forEach(b=>b.classList.remove('active'));
-          btn.classList.add('active');
-          indicator.textContent=`Témoignage ${v} : ${names[v]}`;
-        });
-      });
-
-      // AR target
-      const sceneEl = document.querySelector('#arScene');
-      sceneEl.addEventListener('renderstart', ()=>{
-        const target = document.querySelector('[mindar-image-target]');
-        target.addEventListener('targetFound', ()=>{
-          isTargetFound=true;
-          currentVideo.play().catch(()=>{});
-        });
-        target.addEventListener('targetLost', ()=>{
-          isTargetFound=false;
-          currentVideo.pause();
-        });
-      });
-
-      // Modal INFO
-      const infoBtn=document.getElementById('infoBtn');
-      const infoModal=document.getElementById('infoModal');
-      const closeInfo=document.getElementById('closeInfo');
-      infoBtn.addEventListener('click', ()=>infoModal.style.display='flex');
-      closeInfo.addEventListener('click', ()=>infoModal.style.display='none');
-      infoModal.addEventListener('click', e=>{if(e.target===infoModal) infoModal.style.display='none';});
-    </script>
   </body>
 </html>
