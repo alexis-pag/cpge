@@ -78,6 +78,10 @@ index.html
 
 ## Crédits
 
+Source modèle 3D du trombone:
+Paper clip licence CC attribution par <a href="https://sketchfab.com/marchennessy20">Marc Hennessy</a>.\
+Source du modèle : https://sketchfab.com/3d-models/paper-clip-96a6be214d2545ac8321da9ba3395bb7
+
 Projet imaginé, encadré et co-développé par Matthieu Farcot\
 Avec Alexis Paglierusco et Lucas Munsch (stagiares 1ere Pro CIEL)\
 (c) Lycée Louis de Cormontaigne -- Metz, 2025\
